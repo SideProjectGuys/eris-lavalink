@@ -31,7 +31,9 @@ try {
  * @prop {Boolean} ready If the connection is ready
  * @prop {Boolean} playing If the player is playing
  * @prop {Object} state The lavalink player state
- * @prop {String} track The lavalink track to play
+ * @prop {Number} state.position The position in milliseconds on the current track playback
+ * @prop {Number} state.time The timestamp at which latest state update from lavalink was received
+ * @prop {String} track The encoded identifier of the currently playing track
  */
 class Player extends EventEmitter {
     /**
