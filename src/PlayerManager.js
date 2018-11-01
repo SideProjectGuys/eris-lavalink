@@ -8,7 +8,7 @@
  * @typedef {import('./Lavalink')} Lavalink
  */
 
-const { Collection } = require('eris');
+const Collection = require('eris').Collection;
 const Lavalink = require('./Lavalink');
 const Player = require('./Player');
 
@@ -23,8 +23,8 @@ const Player = require('./Player');
 class PlayerManager extends Collection {
     /**
      * PlayerManager constructor
-     * @param {Client} client Eris client
-     * @param {Object[]} nodes The Lavalink nodes to connect to
+     * @param {import('eris').Client} client Eris client
+     * @param {Array<Object>} nodes The Lavalink nodes to connect to
      * @param {Object} [options] Setup options
      * @param {String} [options.defaultRegion] The default region
      * @param {Number} [options.failoverRate=250] Failover rate in ms
