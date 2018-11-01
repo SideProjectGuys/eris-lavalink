@@ -8,6 +8,11 @@ try {
     EventEmitter = require('events').EventEmitter;
 }
 
+ /**
+ * @typedef {import('./PlayerManager')} PlayerManager
+ * @typedef {import('./Lavalink')} Lavalink
+ */
+
 /** @typedef {Object} BandSettings
  * @prop {Number} band The band to change, it ranges from `0` to `14`, 0 being lowest frequency
  * @prop {Number} gain The gain to apply to the band, ranges from `-0.25` to `1.0`, `-0.25` effectively muting the band, and `0.25` doubling it
