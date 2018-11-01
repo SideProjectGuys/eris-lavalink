@@ -8,6 +8,11 @@ try {
     EventEmitter = require('events').EventEmitter;
 }
 
+/** @typedef {Object} BandSettings
+ * @prop {Number} band The band to change, it ranges from `0` to `14`, 0 being lowest frequency
+ * @prop {Number} gain The gain to apply to the band, ranges from `-0.25` to `1.0`, `-0.25` effectively muting the band, and `0.25` doubling it
+ */
+
 /**
  * Represents a player/voice connection to Lavalink
  * @extends EventEmitter
@@ -197,6 +202,30 @@ class Player extends EventEmitter {
 
         this.paused = pause;
         this.playing = !pause;
+    }
+
+    /**
+     * 
+     * @param {Array<BandSettings>} bands The bands to edit
+     * @returns {void}
+     */
+    setEqualizer(bands) {
+        this.node.send({
+            op: 'equalizer',
+            guildId: this.guildId,
+            bands
+        });
+    }
+
+    /**
+     * Destroy the player, may be used to move a player to another node
+     * @returns {void}
+     */
+     destroy() {
+        this.node.send({
+            op: 'destroy',
+            guildId: this.guildId
+        });
     }
 
     /**
