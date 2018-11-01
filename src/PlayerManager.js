@@ -3,6 +3,11 @@
  * DISCLAIMER: We reuse some eris code
  */
 
+ /**
+ * @typedef {import('./Player')} Player
+ * @typedef {import('./Lavalink')} Lavalink
+ */
+
 const { Collection } = require('eris');
 const Lavalink = require('./Lavalink');
 const Player = require('./Player');
@@ -11,9 +16,9 @@ const Player = require('./Player');
  * Player Manager
  * @extends Map
  * @prop {Player} baseObject The player class used to create new players
- * @prop {object} client The eris client
- * @prop {object} defaultRegions The default region config
- * @prop {object} regions The region config being used
+ * @prop {Object} client The eris client
+ * @prop {Object} defaultRegions The default region config
+ * @prop {Object} regions The region config being used
  */
 class PlayerManager extends Collection {
     /**
@@ -21,11 +26,11 @@ class PlayerManager extends Collection {
      * @param {Client} client Eris client
      * @param {Object[]} nodes The Lavalink nodes to connect to
      * @param {Object} [options] Setup options
-     * @param {string} [options.defaultRegion] The default region
-     * @param {number} [options.failoverRate=250] Failover rate in ms
-     * @param {number} [options.failoverLimit=1] Number of connections to failover per rate limit
+     * @param {String} [options.defaultRegion] The default region
+     * @param {Number} [options.failoverRate=250] Failover rate in ms
+     * @param {Number} [options.failoverLimit=1] Number of connections to failover per rate limit
      * @param {Object} [options.player] Optional Player class to replace the default Player
-     * @param {number} [options.reconnectThreshold=2000] The amount of time to skip ahead in a song when reconnecting in ms
+     * @param {Number} [options.reconnectThreshold=2000] The amount of time to skip ahead in a song when reconnecting in ms
      * @param {Object} [options.regions] Region mapping object
      */
     constructor(client, nodes, options) {
@@ -58,12 +63,12 @@ class PlayerManager extends Collection {
     /**
      * Create a Lavalink node
      * @param {Object} options Lavalink node options
-     * @param {string} options.host The hostname to connect to
-     * @param {string} options.port The port to connect with
-     * @param {string} options.region The region of the node
-     * @param {number} options.numShards The number of shards the bot is running
-     * @param {string} options.userId The user id of the bot
-     * @param {string} options.password The password for the Lavalink node
+     * @param {String} options.host The hostname to connect to
+     * @param {String} options.port The port to connect with
+     * @param {String} options.region The region of the node
+     * @param {Number} options.numShards The number of shards the bot is running
+     * @param {String} options.userId The user id of the bot
+     * @param {String} options.password The password for the Lavalink node
      * @returns {void}
      */
     createNode(options) {
@@ -85,7 +90,7 @@ class PlayerManager extends Collection {
 
     /**
      * Remove a Lavalink node
-     * @param {string} host The hostname of the node
+     * @param {String} host The hostname of the node
      * @returns {void}
      */
     removeNode(host) {
@@ -135,7 +140,7 @@ class PlayerManager extends Collection {
     /**
      * Called when an error is received from a Lavalink node
      * @param {Lavalink} node The Lavalink node
-     * @param {string|Error} err The error received
+     * @param {String|Error} err The error received
      * @private
      */
     onError(node, err) {
@@ -157,7 +162,7 @@ class PlayerManager extends Collection {
 
     /**
      * Called when a shard readies
-     * @param {number} id Shard ID
+     * @param {Number} id Shard ID
      * @private
      */
     shardReady(id) {
@@ -170,7 +175,7 @@ class PlayerManager extends Collection {
     /**
      * Switch the voice node of a player
      * @param {Player} player The Player instance
-     * @param {boolean} leave Whether to leave the channel or not on our side
+     * @param {Boolean} leave Whether to leave the channel or not on our side
      * @returns {void}
      */
     switchNode(player, leave) {
@@ -252,8 +257,8 @@ class PlayerManager extends Collection {
 
     /**
      * Join a voice channel
-     * @param {string} guildId The guild ID
-     * @param {string} channelId The channel ID
+     * @param {String} guildId The guild ID
+     * @param {String} channelId The channel ID
      * @param {Object} options Join options
      * @param {Player} [player] Optionally pass an existing player
      * @returns {Promise<Player>}
@@ -299,7 +304,7 @@ class PlayerManager extends Collection {
 
     /**
      * Leave a voice channel
-     * @param {string} guildId The guild ID
+     * @param {String} guildId The guild ID
      * @returns {void}
      */
     async leave(guildId) {
@@ -313,7 +318,7 @@ class PlayerManager extends Collection {
 
     /**
      * Find the ideal voice node based on load and region
-     * @param {string} region Guild region
+     * @param {String} region Guild region
      * @returns {Lavalink} node Node with the lowest load for a region
      */
     async findIdealNode(region) {
@@ -425,7 +430,7 @@ class PlayerManager extends Collection {
 
     /**
      * Get ideal region from data
-     * @param {string} endpoint Endpoint or region
+     * @param {String} endpoint Endpoint or region
      * @private
      */
     getRegionFromData(endpoint) {

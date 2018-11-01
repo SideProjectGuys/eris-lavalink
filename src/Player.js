@@ -16,26 +16,26 @@ try {
 /**
  * Represents a player/voice connection to Lavalink
  * @extends EventEmitter
- * @prop {string} id Guild id for the player
+ * @prop {String} id Guild id for the player
  * @prop {PlayerManager} manager Reference to the player manager
  * @prop {Lavalink} node Lavalink node the player is connected to
- * @prop {object} shard The eris shard the player is associated with
- * @prop {string} hostname Hostname of the lavalink node
- * @prop {string} guildId Guild ID
- * @prop {string} channelId Channel ID
- * @prop {boolean} ready If the connection is ready
- * @prop {boolean} playing If the player is playing
- * @prop {object} state The lavalink player state
- * @prop {string} track The lavalink track to play
+ * @prop {Object} shard The eris shard the player is associated with
+ * @prop {String} hostname Hostname of the lavalink node
+ * @prop {String} guildId Guild ID
+ * @prop {String} channelId Channel ID
+ * @prop {Boolean} ready If the connection is ready
+ * @prop {Boolean} playing If the player is playing
+ * @prop {Object} state The lavalink player state
+ * @prop {String} track The lavalink track to play
  */
 class Player extends EventEmitter {
     /**
      * Player constructor
-     * @param {string} id Guild ID
+     * @param {String} id Guild ID
      * @param {Object} data Player data
-     * @param {string} data.channelId The channel id of the player
-     * @param {string} data.guildId The guild id of the player
-     * @param {string} data.hostname The hostname of the lavalink node
+     * @param {String} data.channelId The channel id of the player
+     * @param {String} data.guildId The guild id of the player
+     * @param {String} data.hostname The hostname of the lavalink node
      * @param {PlayerManager} data.manager The PlayerManager associated with this player
      * @param {Lavalink} data.node The Lavalink node associated with this player
      * @param {Shard} data.shard The eris shard associated with this player
@@ -97,9 +97,9 @@ class Player extends EventEmitter {
     /**
      * Connect to the Lavalink node
      * @param {Object} data The data used to connect
-     * @param {string} data.guildId The guild ID to connect
-     * @param {string} data.sessionId The voice connection session ID
-     * @param {object} data.event The event data from the voice server update
+     * @param {String} data.guildId The guild ID to connect
+     * @param {String} data.sessionId The voice connection session ID
+     * @param {Object} data.event The event data from the voice server update
      * @returns {void}
      */
     connect(data) {
@@ -138,7 +138,7 @@ class Player extends EventEmitter {
 
     /**
      * Play a Lavalink track
-     * @param {string} track The track to play
+     * @param {String} track The track to play
      * @param {Object} [options] Optional options to send
      * @returns {void}
      */
@@ -190,7 +190,7 @@ class Player extends EventEmitter {
 
     /**
      * Used to pause/resume the player
-     * @param {boolean} pause Set pause to true/false
+     * @param {Boolean} pause Set pause to true/false
      * @returns {void}
      */
     setPause(pause) {
@@ -248,7 +248,7 @@ class Player extends EventEmitter {
 
     /**
      * Used for seeking to a track position
-     * @param {number} position The position to seek to
+     * @param {Number} position The position to seek to
      * @returns {void}
      */
     seek(position) {
@@ -261,7 +261,7 @@ class Player extends EventEmitter {
 
     /**
      * Set the volume of the player
-     * @param {number} volume The volume level to set
+     * @param {Number} volume The volume level to set
      * @returns {void}
      */
     setVolume(volume) {
@@ -307,8 +307,8 @@ class Player extends EventEmitter {
 
     /**
      * Switch voice channel
-     * @param {string} channelId Called when switching channels
-     * @param {boolean} [reactive] Used if you want the bot to switch channels
+     * @param {String} channelId Called when switching channels
+     * @param {Boolean} [reactive] Used if you want the bot to switch channels
      * @returns {void}
      */
     switchChannel(channelId, reactive) {
@@ -328,8 +328,8 @@ class Player extends EventEmitter {
 
     /**
      * Update the bot's voice state
-     * @param {boolean} selfMute Whether the bot muted itself or not (audio sending is unaffected)
-     * @param {boolean} selfDeaf Whether the bot deafened itself or not (audio receiving is unaffected)
+     * @param {Boolean} selfMute Whether the bot muted itself or not (audio sending is unaffected)
+     * @param {Boolean} selfDeaf Whether the bot deafened itself or not (audio receiving is unaffected)
      * @private
      */
     updateVoiceState(channelId, selfMute, selfDeaf) {
