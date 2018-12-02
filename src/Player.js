@@ -340,7 +340,7 @@ class Player extends EventEmitter {
      * @private
      */
     updateVoiceState(channelId, selfMute, selfDeaf) {
-        if (this.shard.sendWS) {
+        if (this.shard && this.shard.sendWS) {
             this.shard.sendWS(Constants.GatewayOPCodes.VOICE_STATE_UPDATE, {
                 guild_id: this.id === 'call' ? null : this.id,
                 channel_id: channelId || null,
