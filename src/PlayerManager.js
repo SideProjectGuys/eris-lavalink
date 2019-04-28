@@ -207,6 +207,7 @@ class PlayerManager extends Collection {
         }
 
         process.nextTick(() => {
+            player.updateVoiceState(channelId);
             this.join(guildId, channelId, null, player).then(player => {
                 if (paused) {
                     player.pause();
