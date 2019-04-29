@@ -249,6 +249,8 @@ class PlayerManager extends Collection {
                         return player.onTrackException(message);
                     case 'TrackStuckEvent':
                         return player.onTrackStuck(message);
+                    case 'SpeakingEvent':
+                        return player.onSpeaking(message);
                     default:
                         return player.emit('warn', `Unexpected event type: ${message.type}`);
                 }

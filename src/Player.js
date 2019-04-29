@@ -193,6 +193,7 @@ class Player extends EventEmitter {
      */
     stateUpdate(state) {
         this.state = state;
+        process.nextTick(() => this.emit('stateUpdate', state));
     }
 
     /**
@@ -310,6 +311,19 @@ class Player extends EventEmitter {
     onTrackStuck(message) {
         this.stop();
         process.nextTick(() => this.emit('end', message));
+    }
+
+    /**
+     * Called on speaking start or stop
+     * @param {Object} message The message if exists
+     * @private
+     */
+    onSpeaking(message) {
+        if (message.speaking) {
+            process.nextTick(() => this.emit('speakingStart', message.userId));
+        } else {
+            process.nextTick(() => this.emit('speakingStop', message.userId));
+        }
     }
 
     /**
